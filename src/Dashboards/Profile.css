@@ -1,0 +1,45 @@
+.profile-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.profile-modal {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 24px 28px;
+  width: min(700px, 100% - 32px);
+}
+
+.profile-modal-title {
+  margin: 0 0 16px;
+  font-size: 20px;
+}
+
+.profile-modal-footer {
+  margin-top: 18px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.profile-cancel-btn {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  border: none;
+  cursor: pointer;
+}
+
+.profile-save-btn {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}

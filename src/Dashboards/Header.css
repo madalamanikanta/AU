@@ -1,0 +1,10 @@
+.faculty-header{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border:1px solid #e6eefb;border-radius:8px;background:linear-gradient(180deg,#fff,#fbfdff);font-family:Inter,system-ui,Arial,Helvetica,sans-serif}
+.faculty-left .welcome{font-size:20px;font-weight:700;color:#0f172a}
+.faculty-right{display:flex;align-items:center}
+.update-btn{background:#2563eb;color:#fff;border:none;padding:8px 14px;border-radius:8px;font-weight:600;cursor:pointer}
+.update-btn:hover{filter:brightness(0.95)}
+
+@media (max-width:520px){
+  .faculty-header{flex-direction:column;align-items:flex-start;gap:8px;padding:12px}
+  .faculty-left .welcome{font-size:18px}
+}

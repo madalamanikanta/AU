@@ -1,0 +1,171 @@
+.hod-preview { padding: 12 }
+.hod-list-item { margin-bottom: 12 }
+
+/* Position the search at the top-left of the HOD page */
+.hod-search-container { align-self: flex-start; margin-bottom: 18px }
+.hod-search-input { width: 60%; padding: 12px; border-radius: 8px; border: 1px solid #cbd5e1; box-shadow: none; font-size: 14px }
+
+/* HOD list styles to match provided wireframe */
+.hod-list { display:flex; flex-direction:column; gap:16px; margin-top:8px }
+
+/* Card style used for each submission in HOD list */
+.hod-item-card {
+	display:flex;
+	align-items:center;
+	justify-content:space-between;
+	padding:16px;
+	border-radius:12px;
+	background: #fff;
+	border: 1px solid #e6eef8;
+	box-shadow: 0 4px 10px rgba(2,6,23,0.04);
+}
+.hod-item-name { font-size:18px; font-weight:700; color:#0f172a }
+.hod-item-sub { color:#475569; margin-top:6px }
+.hod-review-btn { padding:10px 16px; border-radius:10px; background:#2563eb; border:none; color:#fff; cursor:pointer }
+
+/* Page layout containers used by HodMain.jsx */
+.faculty-container { width: 100%; min-height: 100vh; background: linear-gradient(135deg,#f8fafc,#eef2ff); }
+.faculty-main { width: 100%; display: flex; justify-content: center; }
+
+/* Centered card wrapper */
+.hod-list-wrap { width: 100%; max-width: 1000px; }
+
+.hod-search-container { display:flex; justify-content:center; width:100%; margin-bottom:18px }
+.hod-search-input { width: 100%; max-width: 700px; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1; box-shadow: none; font-size: 14px }
+
+/* hod-item-card refined */
+.hod-item-card { display:flex; justify-content:space-between; align-items:center; padding:16px; border-radius:12px; background: #fff; border: 1px solid #e6eef8; box-shadow: 0 4px 10px rgba(2,6,23,0.04); }
+.hod-item-card .hod-item-name { font-size: 18px }
+.hod-item-card .hod-item-sub { margin-top: 6px }
+
+.hod-empty { color: #475569; padding: 12px }
+.hod-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.hod-modal {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 24px 28px;
+  width: min(1100px, 100% - 32px);
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.hod-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.hod-modal-title {
+  margin: 0;
+  font-size: 22px;
+}
+
+.hod-modal-subtitle {
+  margin: 4px 0 0;
+  color: #0f172a; /* darker for readability */
+}
+
+.hod-modal-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.hod-meta-label {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.hod-meta-value {
+  font-weight: 600;
+}
+
+.hod-modal-profile {
+  margin-top: 18px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  color: #0f172a; /* ensure profile text is dark */
+}
+
+.hod-modal-table-wrapper {
+  margin-top: 18px;
+  flex: 1;
+  overflow: auto;
+}
+
+.hod-modal-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.hod-modal-table th,
+.hod-modal-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+}
+
+.hod-modal-table th {
+  font-weight: 600;
+  background: #f8fafc;
+  color: #0f172a; /* darker header text */
+}
+
+.hod-modal-footer {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.hod-modal-close-btn {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  border: none;
+  cursor: pointer;
+}
+
+.hod-modal-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.hod-modal-reject-btn {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #ef4444;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.hod-modal-approve-btn {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #16a34a;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
