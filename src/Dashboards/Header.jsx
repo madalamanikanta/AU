@@ -5,7 +5,12 @@ import { useAuth } from '../context/useAuth.js'
 export default function FacultyHeader() {
   const { user, logout } = useAuth()
 
+  // name like before
   const name = user?.profile?.employeeName || user?.email || ''
+
+  // read isHod from the same user object as name
+  const isHod =
+    user?.isHod === true || user?.profile?.isHod === true // works for both cases
 
   const handleUpdate = () => {
     window.location.hash = '#/profile-update'
@@ -15,7 +20,6 @@ export default function FacultyHeader() {
     try {
       logout()
     } finally {
-      // ensure UI goes to login view
       window.location.hash = ''
     }
   }
@@ -23,11 +27,15 @@ export default function FacultyHeader() {
   return (
     <header className="faculty-header">
       <div className="faculty-left">
-        <div className="welcome">{`Welcome ${name || 'User'}`}</div>
+        <div className="welcome">
+          {isHod ? 'Welcome HOD' : `Welcome ${name || 'User'}`}
+        </div>
       </div>
       <div className="faculty-right">
         <button className="update-btn" onClick={handleUpdate}>Update Profile</button>
-        <button className="update-btn" onClick={handleLogout} style={{ marginLeft: 8 }}>Logout</button>
+        <button className="update-btn" onClick={handleLogout} style={{ marginLeft: 8 }}>
+          Logout
+        </button>
       </div>
     </header>
   )

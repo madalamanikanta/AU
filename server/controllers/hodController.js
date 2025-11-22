@@ -1,6 +1,8 @@
 const User = require('../models/User')
 const Article = require('../models/article')
 const { recalcTotalFromApprovals } = require('../services/formService')
+const fs = require('fs')
+const path = require('path')
 
 /**
  * Return forms for the HOD's department for a given year.
@@ -116,6 +118,44 @@ async function approveSection(req, res, next) {
     // Preserve detailed per-section approvals in form.approvals.
     if (status === 'REJECTED') {
       form.status = 'REJECTED'
+
+      // Delete uploaded proof files for this form's research entries
+      try {
+        const uploadsDir = path.join(__dirname, '..', 'uploads')
+        if (Array.isArray(form.research)) {
+          for (const entry of form.research) {
+            if (Array.isArray(entry.proofs)) {
+              for (const p of entry.proofs) {
+                try {
+                  const url = (p && (p.url || p.path)) || ''
+                  if (!url) continue
+                  // url may be like '/uploads/filename' or 'uploads/filename'
+                  const parts = String(url).split('/')
+                  const fname = parts[parts.length - 1]
+                  if (!fname) continue
+                  const fp = path.join(uploadsDir, fname)
+                  // unlink if exists
+                  try {
+                    await fs.promises.access(fp)
+                    await fs.promises.unlink(fp)
+                  } catch (e) {
+                    // file may not exist; ignore
+                  }
+                } catch (e) {
+                  // ignore per-file errors
+                }
+              }
+              // remove proof references from DB
+              entry.proofs = []
+            }
+          }
+        }
+      } catch (e) {
+        console.warn('Failed to delete uploaded proofs on reject', e)
+      }
+
+      await faculty.save()
+      return res.json({ success: true })
     } else if (status === 'ACCEPTED') {
       form.status = 'ACCEPTED'
     }

@@ -19,9 +19,9 @@ const FacultyRejected = ({ remarks = '' }) => {
             <h1 className="faculty-title">Your Previous Application was rejected</h1>
 
             {remarks ? (
-              <div className="faculty-subtitle">Remarks : {remarks}</div>
+              <div className="faculty-subtitle"> </div>
             ) : (
-              <div className="faculty-subtitle">Remarks : -</div>
+              <div className="faculty-subtitle"></div>
             )}
 
             <div style={{ marginTop: 28 }}>

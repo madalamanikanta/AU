@@ -25,9 +25,8 @@ async function run() {
     await connectMongo()
     console.log('Connected to MongoDB')
 
-    const randomSuffix = Math.floor(Math.random() * 100000)
-    const sampleEmail = `faculty.${randomSuffix}@anurag.edu`
-    const password = `Test@${randomSuffix}`
+    const sampleEmail = `hod.ai@anurag.edu.in`
+    const password = `Test@12345`
     const salt = await bcrypt.genSalt(10)
     const passwordHash = await bcrypt.hash(password, salt)
 
@@ -37,10 +36,10 @@ async function run() {
       isHod: false,
       role: 'FACULTY',
       profile: {
-        employeeName: `${randomFrom(names)} ${randomFrom(surnames)}`,
-        department: randomFrom(departments),
-        experienceYears: Math.floor(Math.random() * 20) + 1,
-        designation: randomFrom(designations),
+        employeeName: "Dr.Mallikarjuna Reddy",
+        department: "Artificial Intelligence ",
+        experienceYears: 10,
+        designation: "HOD",
         contactNumber: randomPhone(),
       },
       forms: [],

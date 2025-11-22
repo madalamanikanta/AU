@@ -1,5 +1,5 @@
 // src/Dashboards/Hod/HodPreview.jsx
-import React from 'react'
+import React, { useState } from 'react'
 import './Hod.css'
 // 👇 add this line
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'
@@ -11,6 +11,8 @@ export default function HodPreview({
   onClose,
   onApprove,
   onReject,
+  onApproveRow,
+  onRejectRow,
 }) {
   if (!form || !profile) return null
 
@@ -27,6 +29,7 @@ export default function HodPreview({
 
   const formYear = form.formYear || form.year || ''
   const entriesCount = entries.length
+  const [selectedFiles, setSelectedFiles] = useState({})
 
   return (
     <div className="hod-modal-backdrop">
@@ -103,27 +106,31 @@ export default function HodPreview({
                       <td style={{ color: '#000' }}>{journal || '-'}</td>
                       <td style={{ color: '#000' }}>{indexed || '-'}</td>
                       <td style={{ color: '#000' }}>{authorRole || '-'}</td>
-                      <td>
-                          {Array.isArray(proofs) && proofs.length > 0 ? (
-                            proofs.map((p, i) => {
-                              const raw = (p && (p.url || p.path || p.fileUrl)) || String(p) || ''
-                              let href = raw
+                          <td>
+                              {Array.isArray(proofs) && proofs.length > 0 ? (
+                                proofs.map((p, i) => {
+                                  const raw = (p && (p.url || p.path || p.fileUrl)) || String(p) || ''
+                                  let href = raw
 
-                              if (href && !href.startsWith('http')) {
-                                if (!href.startsWith('/')) href = `/${href}`
-                                href = `${API_BASE_URL}${href}`
-                              }
+                                  if (href && !href.startsWith('http')) {
+                                    if (!href.startsWith('/')) href = `/${href}`
+                                    href = `${API_BASE_URL}${href}`
+                                  }
 
-                              return (
-                                <div key={i}>
-                                  <a href={href || '#'} target="_blank" rel="noreferrer">View</a>
-                                </div>
-                              )
-                            })
-                          ) : (
-                            '—'
-                          )}
-                        </td>
+                                  const fileName = (p && p.filename) || String(p)
+                                  return (
+                                    <div key={i}>
+                                      <a href={href} target="_blank" rel="noopener noreferrer">
+                                        <button className="view-btn">View</button>
+                                      </a>
+                                    </div>
+                                  )
+                                })
+                              ) : (
+                                '—'
+                              )}
+                          
+                          </td>
 
                       <td style={{ color: '#000' }}>{date ? String(date).slice(0, 10) : '-'}</td>
                     </tr>

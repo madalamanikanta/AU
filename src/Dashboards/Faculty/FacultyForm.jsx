@@ -215,7 +215,7 @@ input[type="file"] {
                       <option value="Co-Author">Co-Author</option>
                     </select>
                   </td>
-                  <td className="fd-td"><input className="fd-input" type="file" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" onChange={(e) => updateRow(r.id, 'documentFile', e.target.files?.[0] || null)} /></td>
+                  <td className="fd-td"><input className="fd-input" type="file" accept=".pdf" onChange={(e) => updateRow(r.id, 'documentFile', e.target.files?.[0] || null)} /></td>
                   <td className="fd-td" style={{textAlign:'center'}}>
                     <button type="button" onClick={() => removeRow(r.id)} style={{background:'transparent',border:'none',color:'#dc2626',cursor:'pointer'}}>Delete</button>
                   </td>
