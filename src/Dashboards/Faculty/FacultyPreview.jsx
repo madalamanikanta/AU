@@ -53,10 +53,13 @@ export default function FacultyPreviewModal({ draft, onClose, onSubmitted }) {
         const uploads = []
         for (let i = 0; i < rows.length; i++) {
           const r = rows[i]
-          const file = r.documentFile || r.document || null
-          if (file && file instanceof File) {
+          const files = r.documentFiles || []
+          if (files.length > 0) {
             const fd = new FormData()
-            fd.append('proof', file, file.name)
+            // append each file under the field name 'proofs'
+            for (const file of files) {
+              fd.append('proofs', file, file.name)
+            }
             uploads.push(
               authorizedFetch(`/api/forms/${returnedForm.formYear}/research/${i}/proofs`, {
                 method: 'POST',

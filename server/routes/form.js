@@ -31,6 +31,6 @@ router.post(
 
 router.get('/:year', authenticate, formController.getForm)
 
-router.post('/:year/research/:researchIndex/proofs', authenticate, upload.single('proof'), formController.uploadProof)
+router.post('/:year/research/:researchIndex/proofs', authenticate, upload.array('proofs'), formController.uploadProof)
 
 module.exports = router

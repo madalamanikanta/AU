@@ -84,10 +84,10 @@ input[type="file"] {
     indexedIn: '',
     dateOfPublication: '',
     authorRole: '',
-    documentFile: null,
+    documentFiles: [],
   })
 
-  const initialRow = { id: 'r0', articleTitle: '', journalNameIssnIsbn: '', indexedIn: '', dateOfPublication: '', authorRole: '', documentFile: null }
+  const initialRow = { id: 'r0', articleTitle: '', journalNameIssnIsbn: '', indexedIn: '', dateOfPublication: '', authorRole: '', documentFiles: [] }
   const [rows, setRows] = useState(() => {
     try {
       const raw = sessionStorage.getItem('facultyFormDraft')
@@ -128,7 +128,7 @@ input[type="file"] {
           indexedIn: r.indexedIn,
           dateOfPublication: r.dateOfPublication,
           authorRole: r.authorRole,
-          documentFileName: r.documentFile ? (r.documentFile.name || 'attached') : null,
+          documentFilesNames: Array.isArray(r.documentFiles) ? r.documentFiles.map((f) => f.name || '') : [],
         })),
       }
       localStorage.setItem('facultyFormDraft', JSON.stringify(draft))
@@ -215,7 +215,7 @@ input[type="file"] {
                       <option value="Co-Author">Co-Author</option>
                     </select>
                   </td>
-                  <td className="fd-td"><input className="fd-input" type="file" accept=".pdf" onChange={(e) => updateRow(r.id, 'documentFile', e.target.files?.[0] || null)} /></td>
+                  <td className="fd-td"><input className="fd-input" type="file" accept=".pdf" multiple onChange={(e) => updateRow(r.id, 'documentFiles', Array.from(e.target.files || []))} /></td>
                   <td className="fd-td" style={{textAlign:'center'}}>
                     <button type="button" onClick={() => removeRow(r.id)} style={{background:'transparent',border:'none',color:'#dc2626',cursor:'pointer'}}>Delete</button>
                   </td>

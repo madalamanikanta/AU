@@ -117,11 +117,11 @@ export default function HodPreview({
                                     href = `${API_BASE_URL}${href}`
                                   }
 
-                                  const fileName = (p && p.filename) || String(p)
+                                  const fileName = (p && p.fileName) || String(p)
                                   return (
                                     <div key={i}>
                                       <a href={href} target="_blank" rel="noopener noreferrer">
-                                        <button className="view-btn">View</button>
+                                        <button className="view-btn" style={{ background: 'rgba(255,255,255,0.5)' }}>View</button>
                                       </a>
                                     </div>
                                   )

@@ -10,14 +10,14 @@ const ResearchEntrySchema = new Schema({
   hodComment: { type: String },
   hodApprovedBy: { type: Schema.Types.ObjectId, ref: 'User' },
   hodApprovedAt: { type: Date },
-  proofs: [{ url: String, filename: String, uploadedAt: Date }],
+  proofs: [{ url: String, fileName: String, mimeType: String, uploadedAt: { type: Date, default: Date.now } }],
   // approvals per research entry (HOD may approve/reject individual research rows)
   approvals: [new Schema({
     status: { type: String, enum: ['ACCEPTED','REJECTED'], required: true },
     approvedBy: { type: Schema.Types.ObjectId, ref: 'User' },
     approvedAt: { type: Date },
     comment: { type: String },
-    proofs: [{ url: String, filename: String, uploadedAt: Date }],
+    proofs: [{ url: String, fileName: String, mimeType: String, uploadedAt: { type: Date, default: Date.now } }],
   }, { _id: false })],
 })
 
