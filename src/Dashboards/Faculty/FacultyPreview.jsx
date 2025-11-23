@@ -197,7 +197,7 @@ export default function FacultyPreviewModal({ draft, onClose, onSubmitted }) {
         {error && <div style={{ color: 'red', marginTop: 12 }}>{error}</div>}
 
         <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 8, marginTop: 16 }}>
-          <button onClick={onClose} style={{ padding: '10px 14px', borderRadius: 8 }}>Edit</button>
+          <button onClick={onClose} style={{ padding: '10px 14px', borderRadius: 8 , background: '#2563eb'}}>Edit</button>
           <button onClick={handleConfirm} disabled={submitting} style={{ padding: '10px 14px', borderRadius: 8, background: '#2563eb', color: '#fff', border: 'none' }}>
             {submitting ? 'Submitting…' : 'Confirm & Submit'}
           </button>
